@@ -45,6 +45,14 @@ export default {
 						name: 'skeleton',
 						enhancements: true,
 					},
+					{
+						name: 'vintage',
+						enhancements: true,
+					},
+					{
+						name: 'hamlindigo',
+						enhancements: true,
+					},
 				],
 			},
 		}),

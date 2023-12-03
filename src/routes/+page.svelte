@@ -2,8 +2,8 @@
 	import productsStore from "$lib/stores/productsStore";
 	import type { PageData } from "./$types";
 	import Hero from "./Hero.svelte";
-	import Products from "./Products.svelte";
-	import ShowCase from "./ShowCase.svelte";
+	import Products from "../lib/components/Products.svelte";
+	import ShowCase from "../lib/components/ShowCase.svelte";
 
 	export let data: PageData;
 	productsStore.set(data.products);	
@@ -11,6 +11,7 @@
 
 <section class="">
 	<Hero
+		href="/catalog/mens-shirts"
 		title="Payments tool for software companies" 
 		copyWrite="From checkout to global sales tax compliance, companies around the world use Flowbite to simplify their payment stack"
 		image="/shirt.png" 
@@ -22,6 +23,7 @@
 	/>
 
 	<Hero
+		href="/catalog"
 		title="Payments tool for software companies" 
 		copyWrite="From checkout to global sales tax compliance, companies around the world use Flowbite to simplify their payment stack"
 		image="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png" 

@@ -9,7 +9,7 @@
   let value = roundToNearestHalf(product.rating);
 </script>
 
-<div class={"card w-80 max-w-xs rounded-xl " + clazz}>
+<div class={"card w-72 max-w-xs rounded-xl " + clazz}>
   <img class="object-cover h-60 w-full rounded-t-xl" src={product.images[0]} alt="">
   <h1 class="card-header">{product.title}</h1>
   <div class="flex my-4 items-center">
@@ -21,7 +21,7 @@
     <span class="text-sm">{product.rating}</span>
   </div>
   <div class="card-footer flex items-center justify-between">
-    <p class="text-3xl">${product.price}</p>
+    <p class="text-3xl mr-4">${product.price}</p>
     <button class="btn variant-filled-primary">
       <span class="mr-2"><CartPlusAltOutline/></span>
       ADD TO CART

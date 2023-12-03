@@ -10,7 +10,7 @@
   <h3 class="h6">{title}</h3>
   <div class="flex items-center justify-between">
     <p class="font-bold h4">{copyWrite}</p>
-    <a href="/" class="variant-ghost-primary btn btn-sm">View all</a>
+    <a href="/" class="variant-filled-secondary btn btn-sm">View all</a>
   </div>
   <Products category={category} class="pt-4 pb-10" />
 </div>

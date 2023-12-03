@@ -1,18 +1,17 @@
 <script lang="ts">
-import type { Product } from "$lib";
-import ProductCard from "$lib/components/ProductCard.svelte";
-	import Carousel from "$lib/components/carousel/Carousel.svelte";
-import productsStore from "$lib/stores/productsStore";
-	import { CardPlaceholder } from "flowbite-svelte";
+	import type { Product } from "$lib";
+
+	import productsStore from "$lib/stores/productsStore";
+	import Carousel from "./carousel/Carousel.svelte";
 	import { onMount } from "svelte";
+	import ProductCard from "./ProductCard.svelte";
+	import { CardPlaceholder } from "flowbite-svelte";
 export let category: string;
 let products: Product[];
 let clazz = "";
 export {clazz as class};
 onMount(() => {
-	let i = 0;
 	products = $productsStore.filter((product) => {
-		if (i > 4) return;
 		return category === product.category;
 	});
 });
@@ -20,7 +19,7 @@ onMount(() => {
 
 
 
-<Carousel let:Item class="pt-4 pb-10">
+<Carousel let:Item class={"pt-4 pb-10 " + clazz}>
 	{#if !products}
 		<CardPlaceholder />
 		<CardPlaceholder />
