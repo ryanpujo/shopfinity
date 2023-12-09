@@ -2,4 +2,4 @@
 
 </script>
 
-<p class="text-sm"><slot/></p>
+<p class="text-xs font-bold"><slot/></p>
