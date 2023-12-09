@@ -4,9 +4,6 @@
 	import Hero from "./Hero.svelte";
 	import Products from "../lib/components/Products.svelte";
 	import ShowCase from "../lib/components/ShowCase.svelte";
-
-	export let data: PageData;
-	productsStore.set(data.products);	
 </script>
 
 <section class="">

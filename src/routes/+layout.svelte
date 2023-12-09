@@ -1,66 +1,23 @@
 <script lang="ts">
 	import '../app.postcss';
-	import { AppShell } from "@skeletonlabs/skeleton";
+	import { AppShell, Drawer, initializeStores } from "@skeletonlabs/skeleton";
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
-
 import { storePopup } from '@skeletonlabs/skeleton';
 storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 			
 	import Header from './Header.svelte';
 	import Footer from './Footer.svelte';
 	import { nanoid } from 'nanoid';
-	import { NavHamburger } from 'flowbite-svelte';
-	import { TextCenterSolid } from 'flowbite-svelte-icons';
-
-	const leftNav = [
-		{
-			id: nanoid(4),
-			title: 'Home',
-			href: '/',
-		},
-		{
-			id: nanoid(4),
-			title: 'Catalog',
-			href: '/catalog',
-		},
-		{
-			id: nanoid(4),
-			title: 'Customer Service',
-			href: '/cs',
-		},
-		{
-			id: nanoid(4),
-			title: 'Policy',
-			href: '/policy',
-		},
-		{
-			id: nanoid(4),
-			title: 'Blog',
-			href: '/blog',
-		},
-	];
-	const rightNav = [
-		{
-			id: nanoid(4),
-			title: 'Deal of The Day',
-			href: '/dotd',
-		},
-		{
-			id: nanoid(4),
-			title: 'Hot Deals',
-			href: '/hotdeals',
-		},
-		{
-			id: nanoid(4),
-			title: 'Best Sellers',
-			href: '/bestsellers',
-		},
-		{
-			id: nanoid(4),
-			title: 'New Arrivals',
-			href: '/newarrivals',
-		},
-	];
+		import type { PageData } from './$types';
+	import productsStore from '$lib/stores/productsStore';
+	import { leftNav, rightNav } from '$lib/navs';
+	import List from '$lib/components/list/List.svelte';
+	import ListItem from '$lib/components/list/ListItem.svelte';
+	import ListItemTitle from '$lib/components/list/ListItemTitle.svelte';
+	export let data: PageData;
+	productsStore.set(data.products);	
+	initializeStores();
+	
 	
 </script>
 
@@ -70,24 +27,42 @@ storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 	<svelte:fragment slot="header">
 		<Header>
 			<svelte:fragment slot="extension">
-				<ul class="list flex">
-					<li class="">
-						<span class="mr-2">
-							<TextCenterSolid size='sm'/>
-						</span>
-						Browse Categories
-					</li>
+				<List class="flex">
+					<ListItem icon='mdi:menu'>
+						<ListItemTitle>
+							Browse Categories
+						</ListItemTitle>
+					</ListItem>
 					{#each leftNav as {id, title, href} (id)}
-						<li class=""><a href={href}>{title}</a></li>
+						<ListItem {href}>
+							<ListItemTitle>
+								{title}
+							</ListItemTitle>
+						</ListItem>
 					{/each}
-				</ul>
-				<ul class="flex list">
+				</List>
+				<List class="flex">
 					{#each rightNav as {id, title, href} (id)}
-						<li class=""><a href={href}>{title}</a></li>
+					<ListItem {href}>
+						<ListItemTitle>
+							{title}
+						</ListItemTitle>
+					</ListItem>
 					{/each}
-				</ul>
+				</List>
 			</svelte:fragment>
 		</Header>
+	</svelte:fragment>
+	<svelte:fragment slot="sidebarLeft">
+		<Drawer>
+			<List class=''>
+				{#each leftNav as {id, title, href, icon} (id)}
+					<ListItem {href} icon={icon} {title}>
+						
+					</ListItem>
+				{/each}
+			</List>
+		</Drawer>
 	</svelte:fragment>
 	
 

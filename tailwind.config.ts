@@ -3,14 +3,15 @@ import type { Config } from 'tailwindcss'
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
 import { skeleton } from '@skeletonlabs/tw-plugin'
-import flowbite from 'flowbite/plugin';
+// import flowbite from 'flowbite/plugin';
 
 export default {
 	darkMode: 'class',
 	content: [
 		'./src/**/*.{html,js,svelte,ts}', 
 		join(require.resolve('@skeletonlabs/skeleton'), '../**/*.{html,js,svelte,ts}'),
-		'./node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}',
+		'node_modules/preline/dist/*.js',
+		// './node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}',
 	],
 	theme: {
 		extend: {
@@ -26,6 +27,7 @@ export default {
 	plugins: [
 		forms,
 		typography,
+		require('preline/plugin'),
 		skeleton({
 			themes: {
 				preset: [
@@ -56,6 +58,6 @@ export default {
 				],
 			},
 		}),
-		flowbite
+		// flowbite
 	],
 } satisfies Config;
