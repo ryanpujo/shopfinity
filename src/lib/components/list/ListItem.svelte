@@ -7,7 +7,7 @@
   export let prependAvatar: string | null = null;
   export let href = '';
   export let icon: string | null = null;
-  export let iconColor = '#ffffff';
+  export let iconColor = '';
   export let iconSize = '1em';
   export let title: string | null = '';
   export let subtitle: string | null = '';
