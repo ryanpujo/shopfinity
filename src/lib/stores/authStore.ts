@@ -4,16 +4,17 @@ import { getFirebaseAuth } from '$lib/config/firebase_config';
 
 const authStore = writable<{
 	isLoggedIn: boolean;
-	user?: User | null | undefined;
+	user: User | null;
 }>(
 	{
-		isLoggedIn: false
+		isLoggedIn: false,
+		user: null
 	},
 	(set) => {
 		const unsubscribe = onAuthStateChanged(getFirebaseAuth(), (user) => {
 			set({
+				user,
 				isLoggedIn: user != null,
-				user: user
 			});
 		});
 		return () => unsubscribe();
@@ -22,5 +23,6 @@ const authStore = writable<{
 
 export default {
 	set: authStore.set,
-	subscribe: authStore.subscribe
+	subscribe: authStore.subscribe,
+	update: authStore.update
 };

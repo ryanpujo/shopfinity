@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import type { Nav } from "$lib";
 	import authStore from "$lib/stores/authStore";
 	import { nanoid } from "nanoid";
@@ -50,4 +50,4 @@
 		</p>
 	</DropdownItem>
 </Dropdown>
-<AuthModal bind:formModal />
+<AuthModal bind:formModal /> -->

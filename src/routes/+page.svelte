@@ -24,7 +24,7 @@
 		title="Payments tool for software companies" 
 		copyWrite="From checkout to global sales tax compliance, companies around the world use Flowbite to simplify their payment stack"
 		image="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png" 
-	/>z
+	/>
 	<ShowCase 
 		title="Gadgets"
 		copyWrite="Make the distance shorter with tech"

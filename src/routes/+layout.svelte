@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.postcss';
-	import { AppShell, Drawer, initializeStores } from "@skeletonlabs/skeleton";
+	import { AppShell, Drawer, initializeStores, Modal, type ModalComponent } from "@skeletonlabs/skeleton";
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
 import { storePopup } from '@skeletonlabs/skeleton';
 storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
@@ -14,15 +14,23 @@ storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 	import List from '$lib/components/list/List.svelte';
 	import ListItem from '$lib/components/list/ListItem.svelte';
 	import ListItemTitle from '$lib/components/list/ListItemTitle.svelte';
+	import ModalForm from '$lib/components/ModalForm.svelte';
+	import DrawerContent from '$lib/components/DrawerContent.svelte';
 	export let data: PageData;
 	productsStore.set(data.products);	
 	initializeStores();
+
+storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
+			
 	
 	
 </script>
 
 
-
+<Modal />
+<Drawer>
+	<DrawerContent />
+</Drawer>
 <AppShell>
 	<svelte:fragment slot="header">
 		<Header>
@@ -54,17 +62,8 @@ storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 		</Header>
 	</svelte:fragment>
 	<svelte:fragment slot="sidebarLeft">
-		<Drawer>
-			<List class=''>
-				{#each leftNav as {id, title, href, icon} (id)}
-					<ListItem {href} icon={icon} {title}>
-						
-					</ListItem>
-				{/each}
-			</List>
-		</Drawer>
+		
 	</svelte:fragment>
-	
 
 	<slot />
 	<svelte:fragment slot="footer">
